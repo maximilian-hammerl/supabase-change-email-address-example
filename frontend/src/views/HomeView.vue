@@ -135,10 +135,9 @@ async function loadUser() {
 
       <div style="margin-bottom: 1rem">
         <div>
-          After clicking on either link, click on "Reload user and display
-          current e-mail address" to see that the current e-mail address has
-          changed to the requested e-mail address after clicking on just one of
-          the two links.
+          After clicking on either link, click on the button to see that the
+          current e-mail address has changed to the requested e-mail address
+          after clicking on just one of the two links.
         </div>
         <div>
           Clicking on the second link will lead to an error (check the URL
