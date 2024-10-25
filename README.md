@@ -2,6 +2,8 @@
 
 This repository demonstrates a bug in the Supabase authentication feature, specifically with the `auth.emaildouble_confirm_changes` configuration option in the `config.toml` file for a locally running Supabase. When set to true, this option should require a user to confirm an e-mail address change via both the old and new e-mail addresses. However, in a locally running Supabase instance, only one confirmation is required to complete the e-mail address change, regardless of the `double_confirm_changes` setting.
 
+Bug report: https://github.com/supabase/cli/issues/2801
+
 ## Bug Description
 
 ### Expected Behavior
