@@ -1,7 +1,7 @@
 {
   "name": "supabase",
-  "version": "1.0.0",
-  "description": "sales tool backend",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "npm install && npx supabase start",
     "start-reset": "npm run start && npm run db-reset",

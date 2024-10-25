@@ -25,9 +25,6 @@ async function generateEmailChangeCurrentLink(
     type: "email_change_current",
     email: currentEmailAddress,
     newEmail: newEmailAddress,
-    options: {
-      redirectTo: 'http://127.0.0.1:4242'
-    },
   });
 
   if (error) {
@@ -46,9 +43,6 @@ async function generateEmailChangeNewLink(
     type: "email_change_new",
     email: currentEmailAddress,
     newEmail: newEmailAddress,
-    options: {
-      redirectTo: 'http://127.0.0.1:4242'
-    },
   });
 
   if (error) {
