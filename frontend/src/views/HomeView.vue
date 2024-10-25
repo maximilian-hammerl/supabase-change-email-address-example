@@ -82,33 +82,73 @@ async function loadUser() {
     <div v-if="currentStep === 'testLinks'">
       <h1>Test Change E-Mail Address Links</h1>
 
-      <div>
-        Current e-mail address link:
+      <div style="margin-bottom: 1rem">
+        <div>
+          Current e-mail address link (<code>email_change_current</code>):
+        </div>
         <a target="_blank" :href="currentEmailAddressLink">
           {{ currentEmailAddressLink }}
         </a>
       </div>
 
-      <div>
-        New e-mail address link:
+      <div style="margin-bottom: 1rem">
+        <div>New e-mail address link (<code>email_change_new</code>):</div>
         <a target="_blank" :href="newEmailAddressLink">
           {{ newEmailAddressLink }}
         </a>
       </div>
 
-      <div>Requested e-mail address: {{ newEmailAddress }}</div>
+      <div style="margin-bottom: 1rem">
+        <div>
+          <strong>Important:</strong>
+          The links lead nowhere, but you can see the result from the URL
+          fragment.
+        </div>
+        <div>
+          If the URL fragment looks like
+          <code>#access_token=...&refresh_token=...&...</code>, the action was
+          successful. (More details:
+          <a
+            target="_blank"
+            href="https://supabase.com/docs/guides/auth/sessions/implicit-flow"
+            >Supabase implicit flow</a
+          >)
+        </div>
+        <div>
+          If the URL fragment looks like
+          <code>#error=...&error_code=...&...</code>, the action failed.
+        </div>
+      </div>
 
       <div>
+        Requested e-mail address:
+        <strong>{{ newEmailAddress }}</strong>
+      </div>
+
+      <div style="margin-bottom: 1rem">
         Current e-mail address:
-        <span v-if="currentUser === null"> Loading... </span>
-        <span v-else>
+        <span v-if="currentUser === null">Loading...</span>
+        <strong v-else>
           {{ currentUser.email }}
-        </span>
+        </strong>
+      </div>
+
+      <div style="margin-bottom: 1rem">
+        <div>
+          After clicking on either link, click on "Reload user and display
+          current e-mail address" to see that the current e-mail address has
+          changed to the requested e-mail address after clicking on just one of
+          the two links.
+        </div>
+        <div>
+          Clicking on the second link will lead to an error (check the URL
+          fragment).
+        </div>
       </div>
 
       <div>
         <button @click="loadUser()" :disabled="isLoading">
-          Load User to update current e-mail address
+          Reload user and display current e-mail address
         </button>
       </div>
     </div>
@@ -117,7 +157,7 @@ async function loadUser() {
       <h1>Request Change E-Mail Address Links</h1>
 
       <form @submit.prevent="requestChangeEmailAddressLinks">
-        <div>
+        <div style="margin-bottom: 1rem">
           <label>
             New e-mail address
             <input
@@ -128,9 +168,23 @@ async function loadUser() {
             />
           </label>
         </div>
+        <div style="margin-bottom: 1rem">
+          <div>The new e-mail address is randomly generated.</div>
+          <div>
+            When clicking on the button, the
+            <code>request-change-email-address-links</code> edge function is
+            called. It will create the <code>email_change_current</code> and
+            <code>email_change_new</code> links using the
+            <a
+              target="_blank"
+              href="https://supabase.com/docs/reference/javascript/auth-admin-generatelink"
+              >Supabase <code>generateLink</code> function</a
+            >.
+          </div>
+        </div>
         <div>
           <button type="submit" :disabled="isLoading">
-            Request Change E-Mail Address Links
+            Request change e-mail address links
           </button>
         </div>
       </form>
@@ -139,7 +193,7 @@ async function loadUser() {
     <div v-else-if="currentStep === 'registerLogin'">
       <h1>Register & Login</h1>
       <form @submit.prevent="registerAndLogin">
-        <div>
+        <div style="margin-bottom: 1rem">
           <label>
             E-mail address
             <input
@@ -150,7 +204,7 @@ async function loadUser() {
             />
           </label>
         </div>
-        <div>
+        <div style="margin-bottom: 1rem">
           <label>
             Password
             <input
@@ -161,8 +215,24 @@ async function loadUser() {
             />
           </label>
         </div>
+        <div style="margin-bottom: 1rem">
+          <div>The e-mail address and password are randomly generated.</div>
+          <div>
+            When clicking on the button, the
+            <a
+              target="_blank"
+              href="https://supabase.com/docs/reference/javascript/auth-signup"
+              >Supabase <code>signUp</code> function</a
+            >
+            will be called. Because users needing to confirm their email address
+            before signing in is disabled, the function will also log you in
+            automatically.
+          </div>
+        </div>
         <div>
-          <button type="submit" :disabled="isLoading">Register & Login</button>
+          <button type="submit" :disabled="isLoading">
+            Register and login
+          </button>
         </div>
       </form>
     </div>
