@@ -13,6 +13,6 @@
     "serve": "npx supabase functions serve"
   },
   "devDependencies": {
-    "supabase": "1.207.9"
+    "supabase": "1.219.2"
   }
 }
