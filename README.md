@@ -30,7 +30,7 @@ Contains the Supabase project with the `config.toml` configuration file and the 
 
 Contains a simple frontend to register a new user, request e-mail change confirmation links, and test the bug.
 
-## Usage
+## How to Reproduce
 
 1. Clone the repository
 2. Start Supabase (`cd supabase/`, `npm run start`, and optionally `npm run serve`)
